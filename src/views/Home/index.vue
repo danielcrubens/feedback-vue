@@ -12,11 +12,13 @@ import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import Contact from './Contact.vue'
 import CustomHeader from './CustomHeader.vue'
+import useModal from '../../hooks/useModal'
 
 export default {
   components: { CustomHeader, Contact },
   setup () {
     const router = useRouter()
+    const modal = useModal()
 
     onMounted(() => {
       const token = window.localStorage.getItem('token')
@@ -24,11 +26,18 @@ export default {
         router.push({ name: 'Feedback' })
       }
     })
-    // eslint-disable-next-line
-    function handleLogin() { }
-    // eslint-disable-next-line
-    function handleAccountCreate() { }
 
+    function handleLogin () {
+      console.log('login')
+      modal.open({
+        component: 'ModalLogin'
+      })
+    }
+    function handleAccountCreate () {
+      modal.open({
+        component: 'ModalAccountCreate'
+      })
+    }
     return {
       handleLogin,
       handleAccountCreate

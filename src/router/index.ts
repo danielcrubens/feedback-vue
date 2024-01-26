@@ -15,7 +15,7 @@ const routes = [
     name: 'Feedbacks',
     component: Feedbacks,
     meta: {
-      hasAuth: true
+      hasAuth: false
     }
   },
   {
@@ -23,7 +23,7 @@ const routes = [
     name: 'Credencials',
     component: Credencials,
     meta: {
-      hasAuth: true
+      hasAuth: false
     }
   },
   {

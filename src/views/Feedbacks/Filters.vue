@@ -1,6 +1,8 @@
 <template>
   <div class="flex flex-col">
-    <h1 class="text-2xl font-regular text-brand-darkgray">Filtros</h1>
+    <h1 class="text-2xl font-regular text-brand-darkgray">
+      Filtros
+    </h1>
 
     <ul class="flex flex-col mt-3 list-none">
       <li
@@ -15,9 +17,7 @@
         <div class="flex items-center">
           <span
             :class="filter.color.bg"
-            class="inline-block w-2 h-2 mr-2 rounded-full"
-          />
-          {{ filter.label }}
+            class="inline-block w-2 h-2 mr-2 rounded-full"/> {{ filter.label }}
         </div>
         <span
           :class="filter.active ? filter.color.text : 'text-brand-graydark'"
@@ -72,7 +72,9 @@ export default {
     const store = useStore('Global')
     const state = reactive({
       hasError: false,
-      filters: [{ label: null, amount: null }]
+      filters: [
+        { label: null, amount: null }
+      ]
     })
 
     try {
@@ -80,12 +82,7 @@ export default {
       state.filters = applyFiltersStructure(data)
     } catch (error) {
       state.hasError = !!error
-      state.filters = applyFiltersStructure({
-        all: 0,
-        issue: 0,
-        idea: 0,
-        other: 0
-      })
+      state.filters = applyFiltersStructure({ all: 0, issue: 0, idea: 0, other: 0 })
     }
 
     function handleSelect ({ type }) {

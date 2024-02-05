@@ -4,6 +4,7 @@
     width="100%"
     height="300px"
   >
+
     <content-loader
       class="mt-3 rounded"
       width="90%"

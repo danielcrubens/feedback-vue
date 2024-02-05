@@ -29,7 +29,7 @@ describe('<HeaderLogged />', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it("should render 3 dots when there's not user logged", async () => {
+  it('should render 3 dots when there\'s not user logged', async () => {
     router.push('/')
     await router.isReady()
     const wrapper = shallowMount(HeaderLogged, {
@@ -42,7 +42,7 @@ describe('<HeaderLogged />', () => {
     expect(buttonLogout.text()).toBe('...')
   })
 
-  it("should render user anem when there's user logged", async () => {
+  it('should render user anem when there\'s user logged', async () => {
     router.push('/')
     await router.isReady()
     mockStore.currentUser.name = 'Igor'

@@ -3,7 +3,7 @@ const defaultPagination = {
   offset: 0
 }
 
-export default (httpClient) => ({
+export default httpClient => ({
   getAll: async ({ type, limit, offset } = defaultPagination) => {
     const query = { limit, offset }
     if (type) {

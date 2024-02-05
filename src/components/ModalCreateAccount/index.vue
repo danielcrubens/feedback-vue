@@ -1,8 +1,13 @@
 <template>
   <div class="flex justify-between" id="modal-create-account">
-    <h1 class="text-4xl font-black text-gray-800">Crie uma conta</h1>
+    <h1 class="text-4xl font-black text-gray-800">
+      Crie uma conta
+    </h1>
 
-    <button @click="close" class="text-4xl text-gray-600 focus:outline-none">
+    <button
+      @click="close"
+      class="text-4xl text-gray-600 focus:outline-none"
+    >
       &times;
     </button>
   </div>
@@ -19,7 +24,7 @@
           }"
           class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 border-transparent rounded"
           placeholder="Daniel Rubens"
-        />
+        >
         <span
           v-if="!!state.name.errorMessage"
           class="block font-medium text-brand-danger"
@@ -38,7 +43,7 @@
           }"
           class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 border-transparent rounded"
           placeholder="feedbacker@vue.com"
-        />
+        >
         <span
           v-if="!!state.email.errorMessage"
           class="block font-medium text-brand-danger"
@@ -57,7 +62,7 @@
           }"
           class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 border-transparent rounded"
           placeholder="********"
-        />
+        >
         <span
           v-if="!!state.password.errorMessage"
           class="block font-medium text-brand-danger"
@@ -88,10 +93,7 @@ import { useField } from 'vee-validate'
 import { useToast } from 'vue-toastification'
 import useModal from '../../hooks/useModal'
 import Icon from '../Icon'
-import {
-  validateEmptyAndLength3,
-  validateEmptyAndEmail
-} from '../../utils/validators'
+import { validateEmptyAndLength3, validateEmptyAndEmail } from '../../utils/validators'
 import services from '../../services'
 
 export default {
@@ -101,16 +103,21 @@ export default {
     const modal = useModal()
     const toast = useToast()
 
-    const { value: nameValue, errorMessage: nameErrorMessage } = useField(
-      'name',
-      validateEmptyAndLength3
-    )
-    const { value: emailValue, errorMessage: emailErrorMessage } = useField(
-      'email',
-      validateEmptyAndEmail
-    )
-    const { value: passwordValue, errorMessage: passwordErrorMessage } =
-      useField('password', validateEmptyAndLength3)
+    const {
+      value: nameValue,
+      errorMessage: nameErrorMessage
+    } = useField('name', validateEmptyAndLength3)
+
+    const {
+      value: emailValue,
+      errorMessage: emailErrorMessage
+    } = useField('email', validateEmptyAndEmail)
+
+    const {
+      value: passwordValue,
+      errorMessage: passwordErrorMessage
+    } = useField('password', validateEmptyAndLength3)
+
     const state = reactive({
       hasErrors: false,
       isLoading: false,
@@ -127,6 +134,7 @@ export default {
         errorMessage: passwordErrorMessage
       }
     })
+
     async function login ({ email, password }) {
       const { data, errors } = await services.auth.login({ email, password })
       if (!errors) {
@@ -137,6 +145,7 @@ export default {
 
       state.isLoading = false
     }
+
     async function handleSubmit () {
       try {
         toast.clear()

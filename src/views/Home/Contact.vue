@@ -8,10 +8,16 @@
         Quer saber melhor como funciona e quais são os preços?
       </p>
       <div class="mt-10">
-        <a href="mailto:" class="px-6 py-2 mt-10 font-bold text-white rounded-full  transition duration-300 ease-in-out transform hover:bg-deeppink-500 bg-brand-main focus:outline-none">
+        <a href="mailto:dcr.tecnologi@gmail.com" class="px-6 py-2 mt-10 font-bold text-white rounded-full bg-brand-main focus:outline-none">
           Nos mande um e-mail!
         </a>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+
+}
+</script>

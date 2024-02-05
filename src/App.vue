@@ -16,21 +16,18 @@ export default {
     const router = useRouter()
     const route = useRoute()
 
-    watch(
-      () => route.path,
-      async () => {
-        if (route.meta.hasAuth) {
-          const token = window.localStorage.getItem('token')
-          if (!token) {
-            router.push({ name: 'Home' })
-            return
-          }
-
-          const { data } = await services.users.getMe()
-          setCurrentUser(data)
+    watch(() => route.path, async () => {
+      if (route.meta.hasAuth) {
+        const token = window.localStorage.getItem('token')
+        if (!token) {
+          router.push({ name: 'Home' })
+          return
         }
+
+        const { data } = await services.users.getMe()
+        setCurrentUser(data)
       }
-    )
+    })
   }
 }
 </script>

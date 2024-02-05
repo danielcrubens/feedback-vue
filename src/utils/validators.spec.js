@@ -1,4 +1,7 @@
-import { validateEmptyAndEmail, validateEmptyAndLength3 } from './validators'
+import {
+  validateEmptyAndEmail,
+  validateEmptyAndLength3
+} from './validators'
 
 describe('Validators utils', () => {
   it('should give an error with empty payload', () => {
@@ -6,9 +9,7 @@ describe('Validators utils', () => {
   })
 
   it('should give an error with less then 3 character payload', () => {
-    expect(validateEmptyAndLength3('12')).toBe(
-      '*Este campo precisa de no mínimo 3 caracteres'
-    )
+    expect(validateEmptyAndLength3('12')).toBe('*Este campo precisa de no mínimo 3 caracteres')
   })
 
   it('should returns true when pass a correct param', () => {
@@ -20,9 +21,7 @@ describe('Validators utils', () => {
   })
 
   it('should give an error with a invalid param', () => {
-    expect(validateEmptyAndEmail('myemail@')).toBe(
-      '*Este campo precisa ser um e-mail'
-    )
+    expect(validateEmptyAndEmail('myemail@')).toBe('*Este campo precisa ser um e-mail')
   })
 
   it('should returns true when pass a correct param', () => {

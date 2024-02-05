@@ -96,6 +96,7 @@ export default {
       fetchFeedbacks()
       window.addEventListener('scroll', handleScroll, false)
     })
+
     onUnmounted(() => {
       window.removeEventListener('scroll', handleScroll, false)
     })

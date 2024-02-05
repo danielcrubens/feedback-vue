@@ -8,6 +8,7 @@ import 'normalize.css'
 import '@/assets/css/tailwind.css'
 import '@/assets/css/fonts.css'
 import 'vue-toastification/dist/index.css'
+
 const app = createApp(App)
 app.use(router)
 app.use(Toast, { position: POSITION.BOTTOM_RIGHT })

@@ -8,14 +8,14 @@ import FeedbacksService from './feedbacks'
 const API_ENVS = {
   production: 'https://backend-feedbacker-danielcrubens.vercel.app/',
   development: '',
-  local: 'http://localhost:3000'
+  local: 'https://backend-feedbacker-danielcrubens.vercel.app/'
 }
 
 const httpClient = axios.create({
   baseURL: API_ENVS[process.env.NODE_ENV] || API_ENVS.local
 })
 
-httpClient.interceptors.request.use((config) => {
+httpClient.interceptors.request.use(config => {
   setGlobalLoading(true)
   const token = window.localStorage.getItem('token')
   if (token) {
@@ -24,25 +24,23 @@ httpClient.interceptors.request.use((config) => {
   return config
 })
 
-httpClient.interceptors.request.use(
-  (response) => {
+httpClient.interceptors.response.use((response) => {
+  setGlobalLoading(false)
+  return response
+}, (error) => {
+  const canThrowAnError = error.request.status === 0 ||
+    error.request.status === 500
+
+  if (canThrowAnError) {
     setGlobalLoading(false)
-    return response
-  },
-  (error) => {
-    const cantThrowAnError =
-      error.request.status === 0 || error.resquest.status === 500
-    if (cantThrowAnError) {
-      setGlobalLoading(false)
-      throw new Error(error.message)
-    }
-    if (error.response.status === 401) {
-      router.push({ name: 'Home' })
-    }
-    setGlobalLoading(false)
-    return error
+    throw new Error(error.message)
   }
-)
+  if (error.response.status === 401) {
+    router.push({ name: 'Home' })
+  }
+  setGlobalLoading(false)
+  return error
+})
 
 export default {
   auth: AuthService(httpClient),

@@ -2,7 +2,7 @@
 
 ## 💻 Sobre o projeto
 
-Launchstore é um e-commerce para compra e venda de produtos ou serviços.
+ Aplicação voltada para coletar ou exibir feedback de usuários, podendo ser usado em diferentes tipos de aplicações web.
 
 ## :rocket:  Tecnologias utilizadas
 Esse projeto foi desenvolvido com as seguintes tecnologias:
